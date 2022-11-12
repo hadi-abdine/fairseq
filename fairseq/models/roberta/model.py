@@ -689,6 +689,15 @@ def roberta_large_architecture(args):
     args.encoder_ffn_embed_dim = safe_getattr(args, "encoder_ffn_embed_dim", 4096)
     args.encoder_attention_heads = safe_getattr(args, "encoder_attention_heads", 16)
     base_architecture(args)
+    
+@register_model_architecture("roberta", "roberta_small")
+def roberta_large_architecture(args):
+    args.encoder_layers = safe_getattr(args, "encoder_layers", 4)
+    args.encoder_embed_dim = safe_getattr(args, "encoder_embed_dim", 512)
+    args.encoder_ffn_embed_dim = safe_getattr(args, "encoder_ffn_embed_dim", 512)
+    args.encoder_attention_heads = safe_getattr(args, "encoder_attention_heads", 8)
+    args.max_source_positions = safe_getattr(args, "max_positions", 256)
+    base_architecture(args)
 
 
 @register_model_architecture("roberta", "xlm")
